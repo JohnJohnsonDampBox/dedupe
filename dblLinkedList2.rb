@@ -44,19 +44,22 @@ class LinkedList
 
   def no_duplicates
     c_node = head
-    dupes = []
     while(!c_node.nil?) do
-      val = c_node.data
+      data = c_node.data
       n_node = c_node.nexxt
+      c_check_node = c_node.nexxt
 
-      if dupes.include? val
-        remove(c_node)
-      else
-        dupes << val
+      while(!c_check_node.nil?) do
+        if data == c_check_node.data
+          remove(c_node)
+          break
+        end
+        c_check_node = c_check_node.nexxt
       end
-    c_node = n_node
+      c_node = n_node
     end
   end
+
 end
 
 ll = LinkedList.new
